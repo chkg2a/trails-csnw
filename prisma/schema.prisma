@@ -1,0 +1,75 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Character {
+  id          String   @id @default(uuid())
+  name        String   @unique
+  element     String
+  attackType  String
+  maxCap      String
+  job         String
+  role        String
+  urlSafeName String   @unique
+  createdAt   DateTime @default(now())
+
+  // One-to-one relation with CharacterStats (ONLY defining fields & references here)
+  characterStats   CharacterStats? @relation(fields: [characterStatsId], references: [id])
+  characterStatsId String?         @unique
+
+  // One-to-many relation with CharacterSkills
+  characterSkills CharacterSkills[]
+}
+
+model CharacterStats {
+  id    String @id @default(uuid())
+  power Int    @default(0)
+  ATK   Int    @default(0)
+  HP    Int    @default(0)
+  DEF   Int    @default(0)
+  CRIT  Int    @default(0)
+  HIT   Int    @default(0)
+  FLEE  Int    @default(0)
+  SPD   Int    @default(0)
+  REG   Int    @default(0)
+  MR    Int    @default(0)
+  PR    Int    @default(0)
+  LL    Int    @default(0)
+  CDR   Int    @default(0)
+  CDA   Int    @default(0)
+  MP    Int    @default(0)
+  PP    Int    @default(0)
+  CBR   Int    @default(0)
+  IS    Int    @default(0)
+  HEAL  Int    @default(0)
+  TY    Int    @default(0)
+  RH    Int    @default(0)
+
+  character Character? @relation()
+}
+
+model CharacterSkills {
+  id          String @id @default(uuid())
+  skillId     String
+  characterId String
+
+  character Character @relation(fields: [characterId], references: [id])
+
+  skill Skill @relation(fields: [skillId], references: [id])
+
+  @@unique([characterId, skillId]) // Prevent duplicate skill entries for the same character
+}
+
+model Skill {
+  id       String @id @default(uuid())
+  name     String @unique
+  damage   Int
+  cooldown Int
+
+  characterSkills CharacterSkills[]
+}
