@@ -15,6 +15,7 @@ model Character {
   maxCap      String
   job         String
   role        String
+  skins       Int
   urlSafeName String   @unique
   createdAt   DateTime @default(now())
 
@@ -28,7 +29,7 @@ model Character {
 
 model CharacterStats {
   id    String @id @default(uuid())
-  power Int    @default(0)
+  Power Int    @default(0)
   ATK   Int    @default(0)
   HP    Int    @default(0)
   DEF   Int    @default(0)
@@ -57,19 +58,23 @@ model CharacterSkills {
   id          String @id @default(uuid())
   skillId     String
   characterId String
+  level       Int   @default(1) // Skill level (1-4)
 
   character Character @relation(fields: [characterId], references: [id])
-
-  skill Skill @relation(fields: [skillId], references: [id])
+  skill     Skill     @relation(fields: [skillId], references: [id])
 
   @@unique([characterId, skillId]) // Prevent duplicate skill entries for the same character
 }
 
 model Skill {
-  id       String @id @default(uuid())
-  name     String @unique
-  damage   Int
-  cooldown Int
+  id          String @id @default(uuid())
+  name        String @unique
+  cooldown    Int
+
+  effectLvl1  String
+  effectLvl2  String
+  effectLvl3  String
+  effectLvl4  String
 
   characterSkills CharacterSkills[]
 }

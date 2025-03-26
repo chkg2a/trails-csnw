@@ -1,0 +1,43 @@
+.container-filter {
+  display: grid;
+  align-items: center;
+  grid-template-columns: 0.5fr 1.5fr 1.5fr;
+  gap: 1rem;
+  color: black;
+}
+
+.container-filter-forms {
+  height: 2.5rem;
+  background-color: var(--primary);
+  border: none;
+  border-radius: 0.5rem;
+  color: var(--text-color);
+}
+
+.container-elements {
+  width: 2.8rem;
+  height: 2.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20%;
+  border: 1px solid black;
+  background-color: var(--primary);
+}
+
+.container-elements:hover {
+  filter: brightness(1.2); /* Increases brightness by 20% */
+}
+
+.container-elements:active {
+  filter: brightness(0.8); /* Decreases brightness by 20% */
+}
+
+.container-character-cards {
+  margin-top: 1rem;
+}
+
+.container-character-card {
+  width: 11rem;
+  height: 12.5rem;
+}

@@ -5,15 +5,18 @@
 :root {
   --background: #eeeeee;
   --foreground: #222831;
-  --primary: #393E46;
-  --secondary: #00ADB5;
-  --text-color: #EEEEEE;
+  --primary: #393e46;
+  --secondary: #00adb5;
+  --text-color: #eeeeee;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #222831;
     --foreground: #eeeeee;
+    --primary: #393e46;
+    --secondary: #00adb5;
+    --text-color: #eeeeee;
   }
 }
 

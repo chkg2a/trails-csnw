@@ -1,7 +1,7 @@
 import { prisma } from "@/lib/prisma";
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import { CharacterStatsClient } from "./CharacterStatsClient";
+import "@/css/CharacterPage.css";
 
 interface CharacterPageProps {
   params: { name: string };
@@ -19,29 +19,25 @@ export default async function CharacterPage({ params }: CharacterPageProps) {
     }
 
     return (
-      <div className="flex flex-col p-6">
+      <div className="flex flex-col py-8">
         {/* Character Info Section */}
-        <div className="flex flex-col md:flex-row gap-8 items-center">
-          <div className="relative w-[180px] h-[250px]">
-            <Image
-              src={`/images/portrait/${character.urlSafeName}.png`}
-              alt={character.name}
-              fill
-              className="object-contain"
-              priority
-            />
+        <div className="flex flex-col md:flex-row gap-8">
+          <div className="container-character-portrait">
+            <div className="relative w-full h-full overflow-hidden">
+              <Image
+                src={`/images/hotshot/${character.urlSafeName}.png`}
+                alt={character.name}
+                fill
+                className="object-cover object-top"
+                priority
+              />
+            </div>
           </div>
-          <div className="text-center md:text-left">
+          <div className="text-white text-center md:text-left w-full">
             <h1 className="text-3xl font-bold">{character.name}</h1>
-            <p className="text-gray-600">Element: {character.element}</p>
-            <p className="text-gray-600">Attack Type: {character.attackType}</p>
-            <p className="text-gray-600">Job: {character.job}</p>
-            <p className="text-gray-600">Role: {character.role}</p>
           </div>
         </div>
 
-        {/* Character Stats Component */}
-        <CharacterStatsClient character={character} />
       </div>
     );
   } catch (error) {

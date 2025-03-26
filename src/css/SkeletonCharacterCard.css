@@ -1,0 +1,64 @@
+.skeleton-character-card {
+  border: 1px solid #ccc;
+  position: relative;
+  width: 11rem; /* Same as CharacterCard */
+  height: 12.5rem;
+  background-color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.75rem;
+  padding: 1rem;
+  overflow: hidden;
+}
+
+/* Skeleton Element Icon */
+.skeleton-element-icon {
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  background-color: #ddd;
+  animation: pulse 1.5s infinite;
+}
+
+/* Skeleton Character Content */
+.skeleton-character-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+/* Skeleton Image Placeholder */
+.skeleton-character-image {
+  width: 5rem;
+  height: 8rem;
+  background-color: #ddd;
+  border-radius: 0.5rem;
+  animation: pulse 1.5s infinite;
+}
+
+/* Skeleton Character Name */
+.skeleton-character-name {
+  width: 6rem;
+  height: 1rem;
+  background-color: #ddd;
+  border-radius: 0.5rem;
+  animation: pulse 1.5s infinite;
+}
+
+/* Pulse Animation */
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}

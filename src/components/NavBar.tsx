@@ -11,7 +11,7 @@ export default function NavBar() {
 
   return (
     <nav className="w-full bg-[var(--primary)] shadow-md mt-4 rounded-lg">
-      <div className="flex justify-between items-center max-w-6xl mx-auto font-semibold">
+      <div className="flex justify-between items-center mx-auto font-semibold">
         <div className="bg-[var(--secondary)] p-3 rounded-l">
           <Link href="/" className="text-xl font-bold text-[var(--text-color)]">
             Trails-CSNW.com
